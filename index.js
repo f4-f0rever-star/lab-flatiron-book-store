@@ -45,3 +45,29 @@ const bookStore = {
 
 // Write your code here!
 
+//Select title element save as varibale bookStoreTitle
+//Change element to match bookstore name
+const bookStoreTitle = document.querySelector("#header");
+bookStoreTitle.textContent = bookStore.name;
+
+//loop through every book element and create DOM(create, set and append)
+const bookList = document.querySelector("#book-list");
+
+bookStore.books.forEach(book => {
+    const bookContainer = document.createElement("li");
+
+    const bookTitle = document.createElement("h3");
+    bookTitle.textContent = book.title;
+    bookContainer.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement("p");
+    bookAuthor.textContent = `Author: ${book.author}`;
+    bookContainer.appendChild(bookAuthor);
+
+    const bookImage = document.createElement("img");
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+    bookContainer.appendChild(bookImage);
+
+    bookList.appendChild(bookContainer);
+})
